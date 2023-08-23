@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Atualizar o servidor
+sudo apt update && sudo apt upgrade -y
+
+# Instalar o Apache2
+sudo apt install apache2 -y
+
+# Instalar o unzip
+sudo apt install unzip -y
+
+# Baixar o arquivo zip
+wget https://github.com/denilsonbonatti/linux-site-dio/archive/refs/heads/main.zip -P /tmp
+
+echo "Baixando arquivos e software da internet..."
+
+# Extrair o arquivo zip para /tmp
+unzip /tmp/main.zip -d /tmp
+
+# Mover o conteúdo extraído para /var/www/html
+sudo mv /tmp/linux-site-dio-main/* /var/www/html
+
+
+# Limpar arquivos temporários
+rm -rf /tmp/main.zip /tmp/linux-site-dio-main
+
+echo "Script concluído!"
